@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+.env.*
+contracts
+*.log
+.DS_Store
+.git
+.claude
+PLAN.md
+PLAN_TODOs.md
+FULL_PLAN.md
+SPEC_AGENT_PLAN.md
+CLAUDE.md

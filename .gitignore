@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+
+# Environment variables — never commit secrets
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+
+# Editor / IDE
+.run/
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Runtime
+*.pid
+*.seed
+
+# Generated output
+app/contracts/
+
+# Claude Code internal
+.claude/

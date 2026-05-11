@@ -1,0 +1,52 @@
+{
+  "name": "specter",
+  "version": "1.0.0",
+  "description": "AI-powered requirements elicitation and documentation generator — runs locally with Ollama",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "vite",
+    "dev:server": "node server/index.js",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "start:server": "node server/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "requirements",
+    "specification",
+    "documentation",
+    "ollama",
+    "llm",
+    "ai",
+    "spec-driven-development"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.13.0",
+    "mermaid": "^11.14.0",
+    "p-limit": "^7.3.0",
+    "pg": "^8.20.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.15.0",
+    "remark-gfm": "^4.0.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.12",
+    "tailwindcss": "^4.2.4",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.10"
+  }
+}

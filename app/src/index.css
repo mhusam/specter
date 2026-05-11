@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.theme-memphis {
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(244, 114, 182, 0.25) 0 12%, transparent 12.5%),
+    radial-gradient(circle at 90% 20%, rgba(34, 211, 238, 0.25) 0 10%, transparent 10.5%),
+    radial-gradient(circle at 15% 85%, rgba(250, 204, 21, 0.25) 0 8%, transparent 8.5%);
+}
+
+.theme-memphis-card {
+  border-width: 2px;
+  border-color: #111827;
+  box-shadow: 6px 6px 0 #111827;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
