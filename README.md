@@ -1,4 +1,4 @@
-# 👻 Specter
+<h1><img src="docs/specter-logo.svg" width="34" height="34" alt="" aria-hidden="true" style="vertical-align: middle;" /> Specter</h1>
 
 **Specter** is a free, open-source AI tool that turns vague project ideas into structured, production-ready documentation — entirely on your own machine, with no cloud, no API keys, and no data leaving your hands.
 
@@ -19,6 +19,64 @@ Describe your project in plain language. Specter's AI agent asks the right quest
   &nbsp;
   <img src="screenshots/settings.png" alt="Settings — Ollama and model" width="47%" />
 </p>
+
+---
+
+## System architecture
+
+These diagrams use [Mermaid](https://mermaid.js.org/). On **github.com**, open this README in the normal repo view: fenced `mermaid` blocks are **rendered as diagrams** (GitHub’s built-in Mermaid viewer), not as plain code. In the Cursor/VS Code editor you may still see a code fence until you open the Markdown preview on a renderer that supports Mermaid. For a longer AI-coder-oriented write-up, see [docs/SPECTER-AI-CODER-FLOW.md](docs/SPECTER-AI-CODER-FLOW.md).
+
+### End-to-end data flow
+
+```mermaid
+flowchart TB
+  subgraph IN["Inputs"]
+    U[User: name, vision, mode]
+    OLL[Ollama HTTP on host or Docker host-gateway]
+  end
+
+  PG[(PostgreSQL)]
+
+  U -->|creates project| P[(projects row)]
+  P --> PG
+  P -->|Standard| QFIX[Static questionnaire UI]
+  P -->|AI-assisted| QAI[Ollama: generate questions + suggestions + review]
+  QFIX --> ANS[projects.answers JSONB]
+  QAI --> ANS
+  ANS --> PG
+
+  ANS --> SPECUI[Spec tab: new session]
+  SPECUI --> SESS[(spec_sessions + spec_messages)]
+  SESS --> PG
+  SESS -->|SSE chat| OLL
+  OLL -->|phase transitions| SESS
+
+  SESS -->|Generate Spec| GEN22[Ollama x22 prompts from SPEC_DOC_CATALOG]
+  GEN22 --> VER[(spec_versions.docs_snapshot: 22 md bodies)]
+  VER --> PG
+
+  ANS --> DOCSUI[Docs tab: Generate All]
+  DOCSUI --> GEN31[Ollama x31 prompts from DOC_CATALOG + doc-prompts]
+  GEN31 --> DOCST[(project_doc_states: 31 md bodies)]
+  DOCST --> PG
+
+  VER --> EXP[Export ZIP / MD]
+  DOCST --> UI[Read in UI + regenerate per doc]
+```
+
+### Spec Agent phases
+
+Phases are driven from `app/server/lib/specPromptBuilder.js` and `app/server/routes/specChat.js`.
+
+```mermaid
+stateDiagram-v2
+  [*] --> discovery
+  discovery --> deep_dive: enough roles and capability areas
+  deep_dive --> gap_analysis: EARS-style coverage
+  gap_analysis --> confirmation: gaps addressed
+  confirmation --> completed: user confirms + READY_FOR_GENERATION
+  completed --> [*]
+```
 
 ---
 

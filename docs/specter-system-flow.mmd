@@ -1,0 +1,34 @@
+%% Specter — duplicate of flow in SPECTER-AI-CODER-FLOW.md for Mermaid CLI / Live Editor
+flowchart TB
+  subgraph IN["Inputs"]
+    U[User: name, vision, mode]
+    OLL[Ollama HTTP on host or Docker host-gateway]
+  end
+
+  PG[(PostgreSQL)]
+
+  U -->|creates project| P[(projects row)]
+  P --> PG
+  P -->|Standard| QFIX[Static questionnaire UI]
+  P -->|AI-assisted| QAI[Ollama: generate questions + suggestions + review]
+  QFIX --> ANS[projects.answers JSONB]
+  QAI --> ANS
+  ANS --> PG
+
+  ANS --> SPECUI[Spec tab: new session]
+  SPECUI --> SESS[(spec_sessions + spec_messages)]
+  SESS --> PG
+  SESS -->|SSE chat| OLL
+  OLL -->|phase transitions| SESS
+
+  SESS -->|Generate Spec| GEN22[Ollama x22 prompts from SPEC_DOC_CATALOG]
+  GEN22 --> VER[(spec_versions.docs_snapshot: 22 md bodies)]
+  VER --> PG
+
+  ANS --> DOCSUI[Docs tab: Generate All]
+  DOCSUI --> GEN31[Ollama x31 prompts from DOC_CATALOG + doc-prompts]
+  GEN31 --> DOCST[(project_doc_states: 31 md bodies)]
+  DOCST --> PG
+
+  VER --> EXP[Export ZIP / MD]
+  DOCST --> UI[Read in UI + regenerate per doc]
