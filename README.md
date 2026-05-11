@@ -1,5 +1,19 @@
 <h1><img src="docs/specter-logo.svg" width="34" height="34" alt="" aria-hidden="true" style="vertical-align: middle;" /> Specter</h1>
 
+<p align="left">
+  <a href="https://github.com/mhusam/specter/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License" /></a>
+  <a href="https://github.com/mhusam/specter/stargazers"><img src="https://img.shields.io/github/stars/mhusam/specter?style=social" alt="GitHub stars" /></a>
+  <a href="https://github.com/mhusam/specter/commits/main/"><img src="https://img.shields.io/github/last-commit/mhusam/specter" alt="Last commit" /></a>
+</p>
+
+**Who it’s for:** Builders who want **structured requirements and spec markdown** on their own machine — handoff to engineers, stakeholders, or **AI coding agents**, without cloud APIs.
+
+| | |
+|:---|:---|
+| **Stack** | React, Vite, Express, PostgreSQL, [Ollama](https://ollama.ai) (local LLM) |
+| **Community** | [Issues](https://github.com/mhusam/specter/issues) · [Discussions](https://github.com/mhusam/specter/discussions) · [Contributing](CONTRIBUTING.md) |
+| **Repo visibility** | Maintainer checklist: [docs/GITHUB-DISCOVERY-CHECKLIST.md](docs/GITHUB-DISCOVERY-CHECKLIST.md) (About, topics, social image) |
+
 **Specter** is a free, open-source AI tool that turns vague project ideas into structured, production-ready documentation — entirely on your own machine, with no cloud, no API keys, and no data leaving your hands.
 
 Describe your project in plain language. Specter's AI agent asks the right questions across four guided phases, captures your requirements, then generates a **22-document specification package** and a **31-document technical catalog** — ready to hand to developers, clients, or another AI coding agent.
@@ -495,6 +509,8 @@ Use exactly these values when connecting through Docker Compose:
 ## Contributing
 
 Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup instructions, conventions, and the pull request process.
+
+Maintainers: improve GitHub discoverability (description, topics, Discussions, social preview) using [docs/GITHUB-DISCOVERY-CHECKLIST.md](docs/GITHUB-DISCOVERY-CHECKLIST.md). Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) and [SECURITY.md](SECURITY.md) before participating.
 
 ---
 

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Ask a question
+    url: https://github.com/mhusam/specter/discussions
+    about: Ideas, setup help, and general Q&A (enable Discussions in repo Settings first — see docs/GITHUB-DISCOVERY-CHECKLIST.md).
